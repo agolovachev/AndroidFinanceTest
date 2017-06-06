@@ -1,0 +1,75 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.3.1'
+    }
+}
+
+
+apply plugin: 'com.android.application'
+
+
+dependencies {
+    compile project(':core')
+    compile 'com.android.support:appcompat-v7:+'
+    compile 'org.sqldroid:sqldroid:+'
+    compile 'com.android.support:design:+'
+    compile 'com.jpardogo.googleprogressbar:library:+'
+    compile 'com.android.support:recyclerview-v7:+'
+    compile 'net.steamcrafted:materialiconlib:+'
+    compile 'com.yqritc:recyclerview-flexibledivider:+'
+    compile 'jp.wasabeef:recyclerview-animators:+'
+    compile 'com.malinskiy:superrecyclerview:+'
+    compile 'com.android.support:support-v4:+'
+}
+
+
+
+
+
+repositories {
+    maven {
+        url "https://jitpack.io"
+    }
+}
+
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion '25.0.0'
+    defaultConfig {
+        applicationId "ru.javabegin.training.android6.finance"
+        minSdkVersion 21
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+
+        main.res.srcDirs += ['src/main/res/icons']
+
+//        main.java.srcDirs = ['...']
+//        main.assets.srcDirs = ['...']
+//        test.java.srcDirs = ['...']
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+    productFlavors {
+    }
+}
+
+
+
+
+
