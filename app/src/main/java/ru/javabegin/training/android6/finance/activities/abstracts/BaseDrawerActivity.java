@@ -13,20 +13,24 @@ import android.view.MenuItem;
 import android.view.View;
 
 import ru.javabegin.training.android6.finance.R;
+import ru.javabegin.training.android6.finance.activities.HelpScreenActivity;
 import ru.javabegin.training.android6.finance.activities.list.OperationListActivity;
 import ru.javabegin.training.android6.finance.activities.list.SourceListActivity;
 import ru.javabegin.training.android6.finance.activities.list.StorageListActivity;
+import ru.javabegin.training.android6.finance.activities.reports.BaseReportActivity;
 import ru.javabegin.training.android6.finance.transitions.TransitionSlide;
 
 
 // базовый класс для любого активити, который должен иметь drawer
-// нужно унаследоваться от этого класса и вызвать метод  createDrawer после создания toolbar
+// нужно унаследоваться от этого класса и вызвать метод createDrawer после создания toolbar
 public abstract class BaseDrawerActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     // для запуска активити из пунктов меню
     private Intent sourceListIntent;
     private Intent storageListIntent;
     private Intent operationListIntent;
+    private Intent reportIntent;
+    private Intent helpIntent;
 
 
     // для выполнения анимации при переходе между активити
@@ -43,6 +47,8 @@ public abstract class BaseDrawerActivity extends AppCompatActivity implements Na
         sourceListIntent = new Intent(this, SourceListActivity.class);
         storageListIntent = new Intent(this, StorageListActivity.class);
         operationListIntent = new Intent(this, OperationListActivity.class);
+        reportIntent = new Intent(this, BaseReportActivity.class);
+        helpIntent = new Intent(this, HelpScreenActivity.class);
 
         // анимация перехода по-умолчанию для активити
         transition = new TransitionSlide(this, TransitionSlide.Direction.BOTTOM_TOP);
@@ -95,20 +101,17 @@ public abstract class BaseDrawerActivity extends AppCompatActivity implements Na
         } else if (id == R.id.nav_storages) {
             startActivity(storageListIntent, bundle);
         } else if (id == R.id.nav_reports) {
-
+            startActivity(reportIntent, bundle);
         } else if (id == R.id.nav_settings) {
 
         } else if (id == R.id.nav_help) {
-
+            startActivity(helpIntent, bundle);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
-
-
 
     // хранит значение, как отработал метод onBackPressed, чтобы понимать что должна делать кнопка back - либо закрывать drawer, либо другое действие, указанное в переопределенном дочернем методе
     protected boolean drawerClosed;

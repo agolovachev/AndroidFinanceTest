@@ -97,6 +97,7 @@
     <string name="cant_delete_currency_amount">Нельзя удалить валюту, у которой есть остаток</string>
     <string name="total_balance">Общий остаток:</string>
 
+    <string name="help_about">Тестовое приложение для тренинга  "Разработка приложений на Android 6".  Основная тема - учет финансов в различной валюте</string>
 
 
 </resources>
